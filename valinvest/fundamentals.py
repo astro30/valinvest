@@ -3,7 +3,7 @@ import pandas as pd
 import io
 import re
 import numpy as np
-from findash.environment import *
+from findash.config import *
 
 
 def get_financial_statements(ticker):
