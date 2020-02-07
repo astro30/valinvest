@@ -127,3 +127,21 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# ignore all local configuration
+config/local/**
+!config/local/.gitkeep
+
+# ignore potentially sensitive credentials files
+config/**/*credentials*
+
+# ignore everything in the following folders
+logs/**
+
+# except their sub-folders
+!logs/**/
+
+# also keep all .gitkeep files
+!.gitkeep
+
+.vscode/
