@@ -1,0 +1,7 @@
+name: valinvest
+dependencies:
+- python
+- pandas
+- numpy
+- pytest
+- requests
