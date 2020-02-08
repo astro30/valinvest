@@ -3,7 +3,7 @@ import sqlite3
 from .config import DATABASE_NAME, DATABASE_TYPE
 
 def initdb():
-    engine = sqlalchemy.create_engine('sqlite:///data/storage.db')
+    engine = sqlalchemy.create_engine(DATABASE_TYPE + ':///data/' + DATABASE_NAME + '.db')
     metadata = sqlalchemy.MetaData()
     financials = sqlalchemy.Table('financials', metadata,
                                     sqlalchemy.Column(
