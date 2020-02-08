@@ -19,9 +19,14 @@ with open(pathlib.Path('.', CONF_ROOT, 'database.yml')) as databasefile:
 # API Keys to constants
 ALPHA_VANTAGE_KEY = credentials_config['alpha_vantage']['key']
 FINNHUB_KEY = credentials_config['finnhub']['key']
+REDDIT_CLIENT_ID = credentials_config['reddit']['client_id']
+REDDIT_CLIENT_SECRET = credentials_config['reddit']['client_secret']
+REDDIT_USER_AGENT = credentials_config['reddit']['user_agent']
 
 NASDAQ_100_TICKERS = environment_config['nasdaq_100_tickers']
 
 # Database infos
 DATABASE_TYPE = database_config['database']['type']
 DATABASE_NAME = database_config['database']['name']
+
+
