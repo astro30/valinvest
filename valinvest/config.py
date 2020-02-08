@@ -1,7 +1,27 @@
 import yaml
+import pathlib
 
-with open('../config/local/credentials.yml') as credfile:
-    credentials = yaml.load(credfile, Loader=yaml.BaseLoader)
+# Name of root directory containing project configuration.
+CONF_ROOT = "config"
 
-ALPHA_VANTAGE_KEY = credentials.alpha_vantage.key
-FINNHUB_KEY = credentials.finnhub.key
+with open(pathlib.Path('.', CONF_ROOT, 'local/credentials.yml')) as credfile:
+    credentials_config = yaml.safe_load(credfile)
+
+with open(pathlib.Path('.', CONF_ROOT, 'environment.yml')) as envfile:
+    environment_config = yaml.safe_load(envfile)
+
+with open(pathlib.Path('.', CONF_ROOT, 'logging.yml')) as logfile:
+    logging_config = yaml.safe_load(logfile)
+
+with open(pathlib.Path('.', CONF_ROOT, 'database.yml')) as databasefile:
+    database_config = yaml.safe_load(databasefile)
+
+# API Keys to constants
+ALPHA_VANTAGE_KEY = credentials_config['alpha_vantage']['key']
+FINNHUB_KEY = credentials_config['finnhub']['key']
+
+NASDAQ_100_TICKERS = environment_config['nasdaq_100_tickers']
+
+# Database infos
+DATABASE_TYPE = database_config['database']['type']
+DATABASE_NAME = database_config['database']['name']
