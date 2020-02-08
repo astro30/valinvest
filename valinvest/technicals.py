@@ -1,6 +1,6 @@
 import pandas as pd
 from alpha_vantage.techindicators import TechIndicators
-from findash.config import *
+from .config import *
 
 ti = TechIndicators(key=ALPHA_VANTAGE_KEY, output_format='pandas')
 
