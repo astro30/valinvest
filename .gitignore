@@ -137,9 +137,11 @@ config/**/*credentials*
 
 # ignore everything in the following folders
 logs/**
+data/**
 
 # except their sub-folders
 !logs/**/
+!data/**/
 
 # also keep all .gitkeep files
 !.gitkeep
