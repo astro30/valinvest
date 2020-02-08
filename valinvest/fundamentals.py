@@ -3,7 +3,7 @@ import pandas as pd
 import io
 import re
 import numpy as np
-from findash.config import *
+from .config import *
 
 
 def get_financial_statements(ticker):
@@ -39,7 +39,7 @@ def get_financial_statement(ticker, statement):
     res = requests.get(url)
     data = res.json()
 
-    df = pd.io.json.json_normalize(data['financials'])
+    df = pd.json_normalize(data['financials'])
 
     df['Ticker'] = ticker.upper()
     df['Statement'] = statement
