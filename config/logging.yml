@@ -1,23 +1,22 @@
 version: 1
 disable_existing_loggers: False
-formatters:
-    simple:
-        format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    json_formatter:
-        format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-        class: pythonjsonlogger.jsonlogger.JsonFormatter
 
+formatters:
+    standard:
+        format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    error:
+        format: "%(levelname)s <PID %(process)d:%(processName)s> %(name)s.%(funcName)s(): %(message)s"
 handlers:
     console:
         class: logging.StreamHandler
         level: INFO
-        formatter: simple
+        formatter: standard
         stream: ext://sys.stdout
 
     info_file_handler:
         class: logging.handlers.RotatingFileHandler
         level: INFO
-        formatter: simple
+        formatter: standard
         filename: logs/info.log
         maxBytes: 10485760 # 10MB
         backupCount: 20
@@ -27,16 +26,41 @@ handlers:
     error_file_handler:
         class: logging.handlers.RotatingFileHandler
         level: ERROR
-        formatter: simple
+        formatter: error
         filename: logs/errors.log
         maxBytes: 10485760 # 10MB
         backupCount: 20
         encoding: utf8
         delay: True
-
-loggers:
+    
+    warn_file_handler:
+        class: logging.handlers.RotatingFileHandler
+        level: WARN
+        formatter: standard
+        filename: logs/warn.log
+        maxBytes: 10485760 # 10MB
+        backupCount: 20
+        encoding: utf8
+        delay: True
+    
+    critical_file_handler:
+        class: logging.handlers.RotatingFileHandler
+        level: CRITICAL
+        formatter: standard
+        filename: logs/critical.log
+        maxBytes: 10485760 # 10MB
+        backupCount: 20
+        encoding: utf8
+        delay: True
 
 
 root:
-    level: INFO
-    handlers: [console, info_file_handler, error_file_handler]
+    level: NOTSET
+    handlers: [console]
+    propagate: yes
+
+loggers:
+    sqlalchemy.engine:
+        level: INFO
+        handlers: [console, info_file_handler, error_file_handler, critical_file_handler, warn_file_handler]
+        propagate: no
