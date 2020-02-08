@@ -5,7 +5,6 @@ import re
 import numpy as np
 from .config import *
 
-
 def get_financial_statements(ticker):
     res = pd.DataFrame()
     for statement in ['income-statement', 'balance-sheet-statement', 'cash-flow-statement']:
@@ -31,6 +30,8 @@ def get_beta(ticker):
 def get_financial_statement(ticker, statement):
     if not isinstance(ticker, str):
         raise TypeError("Ticker should be a string.")
+    if ticker not in NASDAQ_100_TICKERS:
+        raise ValueError("Ticker should be a NASDAQ 100 ticker")
     if statement not in ['income-statement', 'balance-sheet-statement', 'cash-flow-statement']:
         raise ValueError(
             "Statement should be income-statement: Income Statement, cash-flow-statement: Cash Flow Statement or balance-sheet-statement: Balance Sheet.")
