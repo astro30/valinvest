@@ -30,8 +30,8 @@ def get_beta(ticker):
 def get_financial_statement(ticker, statement):
     if not isinstance(ticker, str):
         raise TypeError("Ticker should be a string.")
-    if ticker not in NASDAQ_100_TICKERS:
-        raise ValueError("Ticker should be a NASDAQ 100 ticker")
+    if ticker not in NASDAQ_100_TICKERS or SP_500_TICKERS:
+        raise ValueError("Ticker should be a NASDAQ 100 ticker or SP 500 ticker")
     if statement not in ['income-statement', 'balance-sheet-statement', 'cash-flow-statement']:
         raise ValueError(
             "Statement should be income-statement: Income Statement, cash-flow-statement: Cash Flow Statement or balance-sheet-statement: Balance Sheet.")
@@ -185,13 +185,3 @@ def get_scores(ticker):
     ])
 
     return res
-
-def get_nasdaq_scores():
-    res = []
-    for ticker in nasdaq_100_symbols:
-        try:
-            score = get_scores(ticker).iloc[:,-5:].mean(axis=1).sum()
-            res.append([ticker, score])
-            print(ticker, score)
-        except Exception as e:
-            print(ticker, e)
