@@ -24,6 +24,7 @@ REDDIT_CLIENT_SECRET = credentials_config['reddit']['client_secret']
 REDDIT_USER_AGENT = credentials_config['reddit']['user_agent']
 
 NASDAQ_100_TICKERS = environment_config['nasdaq_100_tickers']
+SP_500_TICKERS = environment_config['sp_500_tickers']
 
 # Database infos
 DATABASE_TYPE = database_config['database']['type']
