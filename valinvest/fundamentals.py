@@ -30,7 +30,7 @@ def get_beta(ticker):
 def get_financial_statement(ticker, statement):
     if not isinstance(ticker, str):
         raise TypeError("Ticker should be a string.")
-    if ticker not in NASDAQ_100_TICKERS or SP_500_TICKERS:
+    if ticker not in NASDAQ_100_TICKERS or ticker not in SP_500_TICKERS:
         raise ValueError("Ticker should be a NASDAQ 100 ticker or SP 500 ticker")
     if statement not in ['income-statement', 'balance-sheet-statement', 'cash-flow-statement']:
         raise ValueError(
