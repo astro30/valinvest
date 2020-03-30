@@ -58,7 +58,8 @@ This software calculates an alternate version of the F-Score as follows:
 
 ## Installation
 
-`pip install valinvest`
+> Soon available
+> `pip install valinvest`
 
 ## Examples
 
