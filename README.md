@@ -66,7 +66,7 @@ This software calculates an alternate version of the F-Score as follows:
 ### Starbucks Corporation (SBUX)
 
 |              | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | Score |
-| ------------ | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ----- |
+|--------------|------|------|------|------|------|------|------|------|------|------|------|-------|
 | REV_G        |      | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1     |
 | EBT_G        |      | 1    | 1    | 1    | 0    | 1    | 1    | 1    | 0    | 0    | 1    | 0.7   |
 | EPS_G        |      | 1    | 1    | 1    | 0    | 1    | 0    | 1    | 1    | 1    | 0    | 0.7   |
@@ -81,7 +81,7 @@ This software calculates an alternate version of the F-Score as follows:
 ### Apple Inc. (AAPL)
 
 |              | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | Score |
-| ------------ | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ----- |
+|--------------|------|------|------|------|------|------|------|------|------|------|------|-------|
 | REV_G        |      | 1    | 1    | 1    | 1    | 1    | 1    | 0    | 1    | 1    | 0    | 0.8   |
 | EBT_G        |      | 1    | 1    | 1    | 0    | 1    | 1    | 0    | 1    | 1    | 0    | 0.7   |
 | EPS_G        |      | 1    | 1    | 1    | 0    | 0    | 1    | 0    | 1    | 1    | 0    | 0.6   |
@@ -105,3 +105,8 @@ This software uses code from several open source packages:
 - [numpy](http://numpy.pydata.org)
 - [requests](https://requests.readthedocs.io/en/master/)
 - [alpha_vantage](https://github.com/RomelTorres/alpha_vantage)
+
+This software gets data from several APIs:
+- [Financial Modeling Prep API](https://financialmodelingprep.com)
+- [Reddit](https://www.reddit.com)
+- [Alpha Vantage](https://www.alphavantage.co)
