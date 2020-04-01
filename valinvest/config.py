@@ -13,9 +13,6 @@ with open(pathlib.Path('.', CONF_ROOT, 'environment.yml')) as envfile:
 with open(pathlib.Path('.', CONF_ROOT, 'logging.yml')) as logfile:
     logging_config = yaml.safe_load(logfile)
 
-with open(pathlib.Path('.', CONF_ROOT, 'database.yml')) as databasefile:
-    database_config = yaml.safe_load(databasefile)
-
 # API Keys to constants
 ALPHA_VANTAGE_KEY = credentials_config['alpha_vantage']['key']
 FINNHUB_KEY = credentials_config['finnhub']['key']
@@ -25,9 +22,3 @@ REDDIT_USER_AGENT = credentials_config['reddit']['user_agent']
 
 NASDAQ_100_TICKERS = environment_config['nasdaq_100_tickers']
 SP_500_TICKERS = environment_config['sp_500_tickers']
-
-# Database infos
-DATABASE_TYPE = database_config['database']['type']
-DATABASE_NAME = database_config['database']['name']
-
-
