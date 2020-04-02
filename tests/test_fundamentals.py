@@ -4,13 +4,15 @@ from valinvest.fundamentals import *
 aapl = Fundamental('AAPL')
 sbux = Fundamental('SBUX')
 
+
+# TODO recalculer les scores sur Excel
 reference_scores = {
     'sbux': {
-        'fscore': 7.4,
+        'fscore': 6.7,
         'revenue_score': 1,
         'ebitda_score': 0.7,
         'eps_score': 0.7,
-        'roic_score': 0.8,
+        'roic_score': 0.1,
         'croic_score': 0.9,
         'beta_score': 1,
         'ebitda_cover_score': 1,

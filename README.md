@@ -70,13 +70,13 @@ This software calculates an alternate version of the F-Score as follows:
 | REV_G        |      | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1     |
 | EBT_G        |      | 1    | 1    | 1    | 0    | 1    | 1    | 1    | 0    | 0    | 1    | 0.7   |
 | EPS_G        |      | 1    | 1    | 1    | 0    | 1    | 0    | 1    | 1    | 1    | 0    | 0.7   |
-| ROIC         | 1    | 0    | 1    | 1    | 0    | 1    | 1    | 1    | 1    | 1    | 1    | 0.8   |
+| ROIC         | 0    | 0    | 1    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0.1   |
 | CROIC        | 1    | 1    | 1    | 1    | 1    | 0    | 1    | 1    | 1    | 1    | 1    | 0.9   |
 | 5YRS_BETA    |      |      |      |      |      |      |      |      |      |      |      | 1     |
 | EBITDA_COVER | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1     |
 | DEBT_COST    | 0    | 0    | 0    | 0    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 0.7   |
 | EQ_BUYBACK   |      | 1    | 0    | 0    | 1    | 0    | 0    | 1    | 1    | 1    | 1    | 0.6   |
-| F-SCORE      |      |      |      |      |      |      |      |      |      |      |      | 7.4   |
+| F-SCORE      |      |      |      |      |      |      |      |      |      |      |      | 6.7   |
 
 ### Apple Inc. (AAPL)
 

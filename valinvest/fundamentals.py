@@ -357,7 +357,7 @@ class Fundamental:
         ]["amount"].values
 
         length_array = len(interest_expense)
-        value_array = np.array([float('0')] * length_array)
+        value_array = np.array([float('inf')] * length_array)
 
         np.divide(ebitda,
                   interest_expense,
@@ -418,7 +418,7 @@ class Fundamental:
         ]["amount"].values
 
         length_array = len(interest_expense)
-        value_array = np.array([float('inf')] * length_array)
+        value_array = np.array([float('0')] * length_array)
 
         np.divide(interest_expense,
                   total_debt,
