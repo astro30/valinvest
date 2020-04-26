@@ -147,3 +147,5 @@ data/**
 !.gitkeep
 
 .vscode/
+
+config/
