@@ -12,6 +12,12 @@
 
 ## ✨tl;dr ✨ <!-- omit in toc -->
 For a given stock ticker, `valinvest` calculates a score from 0 to 9. The higher the score, the better the company is according to the scoring methodology.
+1. Install it
+```bash
+pip install valinvest
+```
+
+2. Calculate score
 ```python
 >>> import valinvest
 >>> aapl = valinvest.Fundamental('AAPL')
