@@ -11,8 +11,6 @@ INCOME_STATEMENT = "income-statement"
 BALANCE_STATEMENT = "balance-sheet-statement"
 CASH_FLOW_STATEMENT = "cash-flow-statement"
 
-# TODO rework les calculs des KPIs, ils ne sont pas justes.
-
 
 class Fundamental:
     """A Fundamental object contains fundamental financial data of a given ticker, 

@@ -1,4 +1,4 @@
-from .fundamentals import *
+from .fundamentals import Fundamental
 from .config import SP_500_TICKERS, NASDAQ_100_TICKERS
 
 

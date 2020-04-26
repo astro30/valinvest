@@ -1,7 +1,6 @@
 import yaml
 import pathlib
 
-# Name of root directory containing project configuration.
 CONF_ROOT = "config"
 
 with open(pathlib.Path('.', CONF_ROOT, 'environment.yml')) as envfile:

@@ -1,5 +1,5 @@
 import pytest
-from valinvest.fundamentals import *
+from valinvest.fundamentals import Fundamental
 
 aapl = Fundamental('AAPL')
 sbux = Fundamental('SBUX')
