@@ -146,9 +146,3 @@ This software uses code from several open source packages:
 - [pandas](http://pandas.pydata.org)
 - [numpy](http://numpy.pydata.org)
 - [requests](https://requests.readthedocs.io/en/master/)
-- [alpha_vantage](https://github.com/RomelTorres/alpha_vantage)
-
-This software gets data from several APIs:
-- [Financial Modeling Prep API](https://financialmodelingprep.com)
-- [Reddit](https://www.reddit.com)
-- [Alpha Vantage](https://www.alphavantage.co)
