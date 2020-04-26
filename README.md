@@ -10,15 +10,25 @@
 
 # Welcome to Valinvest <!-- omit in toc -->
 
-> NB: This is still in early development.
+## ✨tl;dr ✨ <!-- omit in toc -->
+For a given stock ticker, `valinvest` calculates a score from 0 to 9. The higher the score, the better the company is according to the scoring methodology.
+```python
+>>> import valinvest
+>>> aapl = valinvest.Fundamental('AAPL')
+>>> aapl.fscore()
+6.8
+```
+
 
 ## Table of contents :books: <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [Methodology description](#methodology-description)
+    - [Growth](#growth)
     - [Profitability](#profitability)
-    - [Leverage, Liquidity and Source of Funds](#leverage-liquidity-and-source-of-funds)
-    - [Operating Efficiency](#operating-efficiency)
+    - [Debts](#debts)
+    - [Market sensibility](#market-sensibility)
+    - [Investment](#investment)
 - [Installation](#installation)
 - [Examples](#examples)
   - [Starbucks Corporation (SBUX)](#starbucks-corporation-sbux)
@@ -34,31 +44,49 @@ The aim of the package is to evaluate a stock according to his fundamentals by s
 
 The scoring methodology is based on Joseph Piotroski's study ([Value Investing: The Use of Historical Financial Statement Information to Separate Winners from Losers](http://www.chicagobooth.edu/~/media/FE874EE65F624AAEBD0166B1974FD74D.pdf)). The F-Score is used to help financial investment decisions by finding the best value stocks on the market.<br>
 
-The score is calculated based on 9 criteria divided into 3 groups:
-
-#### Profitability
-
-- Return on Assets (1 point if it is positive in the current year, 0 otherwise)
-- Operating Cash Flow (1 point if it is positive in the current year, 0 otherwise)
-- Change in Return of Assets (ROA) (1 point if ROA is higher in the current year compared to the previous one, 0 otherwise)
-- Accruals (1 point if Operating Cash Flow/Total Assets is higher than ROA in the current year, 0 otherwise)
-
-#### Leverage, Liquidity and Source of Funds
-
-- Change in Leverage (long-term) ratio (1 point if the ratio is lower this year compared to the previous one, 0 otherwise)
-- Change in Current ratio (1 point if it is higher in the current year compared to the previous one, 0 otherwise)
-- Change in the number of shares (1 point if no new shares were issued during the last year)
-
-#### Operating Efficiency
-
-- Change in Gross Margin (1 point if it is higher in the current year compared to the previous one, 0 otherwise)
-- Change in Asset Turnover ratio (1 point if it is higher in the current year compared to the previous one, 0 otherwise)
+> The Piostroski score is calculated based on 9 criteria divided into 3 groups:
+> 
+> #### Profitability
+>
+> - Return on Assets (1 point if it is positive in the current year, 0 otherwise)
+> - Operating Cash Flow (1 point if it is positive in the current year, 0 otherwise)
+> - Change in Return of Assets (ROA) (1 point if ROA is higher in the current year compared to the previous one, 0 otherwise)
+> - Accruals (1 point if Operating Cash Flow/Total Assets is higher than ROA in the current year, 0 otherwise)
+>
+> #### Leverage, Liquidity and Source of Funds
+>
+> - Change in Leverage (long-term) ratio (1 point if the ratio is lower this year compared to the previous one, 0 otherwise)
+> - Change in Current ratio (1 point if it is higher in the current year compared to the previous one, 0 otherwise)
+> - Change in the number of shares (1 point if no new shares were issued during the last year)
+>
+> #### Operating Efficiency
+>
+> - Change in Gross Margin (1 point if it is higher in the current year compared to the previous one, 0 otherwise)
+> - Change in Asset Turnover ratio (1 point if it is higher in the current year compared to the previous one, 0 otherwise)
+> 
 
 This software calculates an alternate version of the F-Score as follows:
+#### Growth
+- Net Revenue
+- EBITDA
+- Earnings per share (EPS)
+
+#### Profitability
+- CROIC
+- ROIC
+
+#### Debts
+- EBITDA cover ratio
+- Debt coverage
+
+#### Market sensibility
+- Beta
+
+#### Investment
+- Equity buyback
 
 ## Installation
 
-> Soon available
 > `pip install valinvest`
 
 ## Examples
@@ -66,7 +94,7 @@ This software calculates an alternate version of the F-Score as follows:
 ### Starbucks Corporation (SBUX)
 
 |              | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | Score |
-|--------------|------|------|------|------|------|------|------|------|------|------|------|-------|
+| ------------ | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ----- |
 | REV_G        |      | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1     |
 | EBT_G        |      | 1    | 1    | 1    | 0    | 1    | 1    | 1    | 0    | 0    | 1    | 0.7   |
 | EPS_G        |      | 1    | 1    | 1    | 0    | 1    | 0    | 1    | 1    | 1    | 0    | 0.7   |
@@ -78,10 +106,17 @@ This software calculates an alternate version of the F-Score as follows:
 | EQ_BUYBACK   |      | 1    | 0    | 0    | 1    | 0    | 0    | 1    | 1    | 1    | 1    | 0.6   |
 | F-SCORE      |      |      |      |      |      |      |      |      |      |      |      | 6.7   |
 
+```python
+>>> import valinvest
+>>> sbux = valinvest.Fundamental('SBUX')
+>>> sbux.fscore()
+6.7
+```
+
 ### Apple Inc. (AAPL)
 
 |              | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | Score |
-|--------------|------|------|------|------|------|------|------|------|------|------|------|-------|
+| ------------ | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ----- |
 | REV_G        |      | 1    | 1    | 1    | 1    | 1    | 1    | 0    | 1    | 1    | 0    | 0.8   |
 | EBT_G        |      | 1    | 1    | 1    | 0    | 1    | 1    | 0    | 1    | 1    | 0    | 0.7   |
 | EPS_G        |      | 1    | 1    | 1    | 0    | 0    | 1    | 0    | 1    | 1    | 0    | 0.6   |
@@ -92,6 +127,13 @@ This software calculates an alternate version of the F-Score as follows:
 | DEBT_COST    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1     |
 | EQ_BUYBACK   |      | 1    | 0    | 0    | 1    | 0    | 1    | 1    | 1    | 1    | 1    | 0.7   |
 | F-SCORE      |      |      |      |      |      |      |      |      |      |      |      | 6.8   |
+
+```python
+>>> import valinvest
+>>> aapl = valinvest.Fundamental('AAPL')
+>>> aapl.fscore()
+6.8
+```
 
 ## License
 
