@@ -11,6 +11,5 @@ __description__ = 'A value investing tool based on Warren Buffett, Joseph Piotro
 __url__ = 'under construction'
 __version__ = '0.0.1'
 __author__ = 'Guillaume Rey'
-__author_email__ = 'guillaume.rey@gadz.org'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2020 Guillaume Rey'

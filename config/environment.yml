@@ -5,7 +5,6 @@ nasdaq_100_tickers:
   - ALXN
   - ALGN
   - GOOG
-  - GOOGL
   - AMZN
   - AAL
   - AMGN
@@ -131,7 +130,6 @@ sp_500_tickers:
   - ADS
   - LNT
   - ALL
-  - GOOGL
   - GOOG
   - MO
   - AMZN
