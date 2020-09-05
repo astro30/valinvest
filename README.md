@@ -10,7 +10,7 @@
 
 # Welcome to Valinvest <!-- omit in toc -->
 ## 🔥 Important update 🔥 <!-- omit in toc -->
-The Financial API used by valinvest to get financial data has been rewriten and now requires a API Key in order to make request. So, the first step now is to register on https://financialmodelingprep.com/login and get an API key. Keep it, you will need it to use valinvest ;)
+The Financial API used by valinvest to get financial data has been rewritten and now requires a API Key in order to make request. So, the first step now is to register on https://financialmodelingprep.com/login and get an API key. Keep it, you will need it to use valinvest ;)
 
 ## ✨tl;dr ✨ <!-- omit in toc -->
 For a given stock ticker, `valinvest` calculates a score from 0 to 9. The higher the score, the better the company is according to the scoring methodology.
