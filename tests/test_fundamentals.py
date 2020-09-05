@@ -1,8 +1,9 @@
 import pytest
 from valinvest.fundamentals import Fundamental
+API_KEY = ''
 
-aapl = Fundamental('AAPL')
-sbux = Fundamental('SBUX')
+aapl = Fundamental('AAPL', API_KEY)
+sbux = Fundamental('SBUX', API_KEY)
 
 reference_scores = {
     'sbux': {
@@ -11,10 +12,10 @@ reference_scores = {
         'ebitda_score': 0.7,
         'eps_score': 0.7,
         'roic_score': 0.1,
-        'croic_score': 0.9,
+        'croic_score': 0.8,
         'beta_score': 1,
         'ebitda_cover_score': 1,
-        'debt_cost_score': 0.7,
+        'debt_cost_score': 0.8,
         'eq_buyback_score': 0.6
     },
     'aapl': {
@@ -37,19 +38,19 @@ class TestGetFinancials:
     def test_input_types(self):
         # Wrong type input
         with pytest.raises(TypeError):
-            Fundamental(12)
+            Fundamental(12, API_KEY)
 
         # Empty string
         with pytest.raises(ValueError):
-            Fundamental('')
+            Fundamental('', API_KEY)
 
         # Not Nasdaq 100 tickers
         with pytest.raises(ValueError):
-            Fundamental('FP')
+            Fundamental('FP', API_KEY)
 
         # Too many inputs
         with pytest.raises(TypeError):
-            Fundamental('AAPL', 'tt')
+            Fundamental('AAPL', 'tt', API_KEY)
 
 
 class TestComputeFScoreSBUX:
