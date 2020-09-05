@@ -5,21 +5,24 @@ import re
 import numpy as np
 from .config import SP_500_TICKERS, NASDAQ_100_TICKERS
 
-STATEMENT_API_URL = "https://financialmodelingprep.com/api/v3/financials/{statement}/{ticker}"
-BETA_API_URL = "https://financialmodelingprep.com/api/v3/company/profile/{ticker}"
+STATEMENT_API_URL = "https://financialmodelingprep.com/api/v3/financials/{statement}/{ticker}?apikey={apikey}"
+BETA_API_URL = "https://financialmodelingprep.com/api/v3/company/profile/{ticker}?apikey={apikey}"
 INCOME_STATEMENT = "income-statement"
 BALANCE_STATEMENT = "balance-sheet-statement"
 CASH_FLOW_STATEMENT = "cash-flow-statement"
 
 
 class Fundamental:
-    """A Fundamental object contains fundamental financial data of a given ticker, 
+    """A Fundamental object contains fundamental financial data of a given ticker,
     methods including computation of the custom F-Score.
 
     Parameters
     ----------
     ticker : str
         symbol of the company to analyse
+
+    api_key : str
+        Financial Modeling Prep API Key (get yours at https://financialmodelingprep.com/login)
 
     Raises
     ------
@@ -29,7 +32,7 @@ class Fundamental:
         raised when ticker is not listed on SP500 or NASDAQ100 markets.
     """
 
-    def __init__(self, ticker):
+    def __init__(self, ticker, apikey):
         self.statement_strings = [
             INCOME_STATEMENT,
             BALANCE_STATEMENT,
@@ -40,7 +43,11 @@ class Fundamental:
         if not isinstance(ticker, str):
             raise TypeError("Ticker should be a string.")
 
+        if not isinstance(apikey, str):
+            raise TypeError("API KEY should be a string.")
+
         self.ticker = ticker.upper()
+        self.apikey = apikey
 
         # Checks if ticker in SP500 or NASDAQ
         if self.ticker not in NASDAQ_100_TICKERS and self.ticker not in SP_500_TICKERS:
@@ -50,7 +57,7 @@ class Fundamental:
         self.statements = self._get_financial_statements()
 
     def _get_financial_statement(self, statement):
-        """ Get financial statement from Financial Modeling Prep API. 
+        """ Get financial statement from Financial Modeling Prep API.
         This method can retrieve the three key financial reports, ie balance sheet, cash flow and income statements.
 
         Parameters
@@ -65,7 +72,8 @@ class Fundamental:
         """
         url = STATEMENT_API_URL.format(
             statement=statement,
-            ticker=self.ticker)
+            ticker=self.ticker,
+            apikey=self.apikey)
 
         res = requests.get(url).json()
 
@@ -175,7 +183,7 @@ class Fundamental:
         float
             Beta
         """
-        url = BETA_API_URL.format(ticker=self.ticker)
+        url = BETA_API_URL.format(ticker=self.ticker, apikey=self.apikey)
         res = requests.get(url).json()
 
         beta = float("inf")

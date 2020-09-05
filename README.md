@@ -9,6 +9,8 @@
 <h4 align="center">A value investing tool based on Warren Buffett, Joseph Piotroski and Benjamin Graham thoughts</h4>
 
 # Welcome to Valinvest <!-- omit in toc -->
+## 🔥 Important update 🔥 <!-- omit in toc -->
+The Financial API used by valinvest to get financial data has been rewriten and now requires a API Key in order to make request. So, the first step now is to register on https://financialmodelingprep.com/login and get an API key. Keep it, you will need it to use valinvest ;)
 
 ## ✨tl;dr ✨ <!-- omit in toc -->
 For a given stock ticker, `valinvest` calculates a score from 0 to 9. The higher the score, the better the company is according to the scoring methodology.
@@ -20,7 +22,7 @@ pip install valinvest
 2. Calculate score
 ```python
 >>> import valinvest
->>> aapl = valinvest.Fundamental('AAPL')
+>>> aapl = valinvest.Fundamental('AAPL', YOUR_API_KEY)
 >>> aapl.fscore()
 6.8
 ```
