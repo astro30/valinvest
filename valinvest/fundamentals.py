@@ -116,7 +116,7 @@ class Fundamental:
             res = pd.concat([res, self._get_financial_statement(statement)])
 
         res.loc[-1] = [self.ticker, "beta", "beta",
-                       res["year"].max(), self.beta]
+                       res["year"].max(numeric_only=True), self.beta]
 
         dates = pd.DataFrame(range(2009, 2020), columns=['year'])
         dates['key'] = 1
@@ -289,7 +289,7 @@ class Fundamental:
 
         index_array = (
             stmt[stmt["header"] == "net_income"].groupby(
-                ["ticker", "year"]).sum().index
+                ["ticker", "year"]).sum(numeric_only=True).index
         )
 
         res = pd.Series(np.where(value_array > 0.10, 1, 0), index=index_array)
@@ -334,7 +334,7 @@ class Fundamental:
 
         index_array = (
             stmt[stmt["header"] == "net_income"].groupby(
-                ["ticker", "year"]).sum().index
+                ["ticker", "year"]).sum(numeric_only=True).index
         )
 
         res = pd.Series(np.where(value_array > 0.10, 1, 0), index=index_array)
@@ -372,7 +372,7 @@ class Fundamental:
 
         index_array = (
             stmt[stmt["header"] == "net_income"].groupby(
-                ["ticker", "year"]).sum().index
+                ["ticker", "year"]).sum(numeric_only=True).index
         )
 
         res = pd.Series(np.where(value_array > 6, 1, 0), index=index_array)
@@ -433,7 +433,7 @@ class Fundamental:
 
         index_array = (
             stmt[stmt["header"] == "net_income"].groupby(
-                ["ticker", "year"]).sum().index
+                ["ticker", "year"]).sum(numeric_only=True).index
         )
 
         res = pd.Series(np.where(value_array < 0.05, 1, 0), index=index_array)
@@ -466,7 +466,7 @@ class Fundamental:
         if years > 10 or years <= 0:
             raise ValueError("'years' should be between 0 and 10")
 
-        return property[-years:].sum() / years
+        return property[-years:].sum(numeric_only=True) / years
 
     def eps_score(self, years=10):
         """Returns EPS score
